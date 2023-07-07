@@ -1,0 +1,197 @@
+.disponible{
+    color: green;
+}
+.oferta{
+    color: blue;
+}
+.agotado{
+    color: red;
+}
+.grey{
+    background-color: gray;
+}
+.borde{
+    height: 25%;
+    color: red;
+    border-width: 5px;
+    border-color: red;
+    border-style: solid;
+}
+a {
+    text-decoration: none;
+}
+p{
+    align-self: center;
+}
+
+.mitad{
+    height: 70%;
+}
+
+.chico{
+    padding: 0px 20%;
+}
+
+/* css vale */
+
+.contenido {
+    margin-left: 10%;
+    margin-top: 10px;
+    margin-right: 10%;
+}
+
+.contenido p {
+    text-align: justify;
+}
+
+#imgp {
+    display: block;
+    width: 50%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.cardm {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 20%;
+    margin-left: 20%;
+}
+
+.card {
+    
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+}
+
+.card img {
+    width: 200px;
+    padding: 20px;
+}
+
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+
+.container {
+    padding: 2px 16px;
+}
+
+.container h4 {
+    padding: 20px;
+}
+
+.container p {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+@media (max-width: 768px) {
+    .cardm {
+        flex-wrap: wrap;
+    }
+
+    .card img {
+        width: 80%;
+        margin-right: auto;
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+
+    .container h4 {
+        padding-left: 50px;
+        padding-right: 20px;
+    }
+
+    .container p {
+        padding-left: 50px;
+        padding-right: 20px;
+    }
+}
+
+/* fin css vale */
+
+
+#usuarios {
+    padding: 30px;
+}
+
+#subs {
+    max-width:fit-content;
+}
+
+#contraLabel {
+    margin-right: 20px;
+}
+
+#fotoPerfil {
+    width: 250px;
+    margin-bottom: 20px;
+}
+
+#row_progress_bar {
+    --bs-gutter-x: 0rem;
+}
+
+#img_prod {
+    width: 200px;
+    margin-bottom: 20px;
+}
+
+.card-api {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-api img {
+    width: 75%;
+    aspect-ratio: 1/1;
+    object-fit: contain;
+    padding: 30px;
+    align-self: center;
+}
+
+.card-api h4 {
+    align-self: center; 
+}
+
+.card-api p2 {
+    text-align: justify;
+    overflow-y: auto;
+    padding: 5%;
+    height: 20em;
+}
+
+.card-api a {
+    width: 100px;
+    align-self: center; 
+    background-color: rgb(194, 194, 194);
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+#cardRopa {
+    width: 350px;
+    padding: 10px;
+
+}
+
+#cards-ropa {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20em,1fr));
+    gap: 20px;
+} 
+
+
+#ropa {
+    width: 100%;
+}
+
+#tituloRopa {
+    text-align: center;
+}
