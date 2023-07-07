@@ -24,6 +24,16 @@ class Usuario(models.Model):
     idUsuario = models.IntegerField(primary_key=True, verbose_name="Id de usuario")
     nombreUsuario = models.CharField(max_length=80, blank=False, null=False, verbose_name="nombre de usuario")
     mail = models.CharField(max_length=80, blank=False, null=False, verbose_name="correo electrónico")
+
+    def __str__(self):
+        return self.nombreUsuario
+
 class Compra(models.Model):
     idCompra = models.IntegerField(primary_key=True, verbose_name="Id de compra")
-    
+    usuario = models.ForeignKey(Usuario, on_delete=models.DO_NOTHING)
+    producto = models.ForeignKey(Producto, on_delete=models.DO_NOTHING)
+    estado = models.IntegerField(blank=False, null=False,verbose_name="Estado de compra")
+
+    def __str__(self):
+        return self.idCompra
+
