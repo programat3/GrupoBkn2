@@ -24,115 +24,60 @@
 
     <h1 class="text-center pt-5"> Mantenedor de productos</h1>
     <br>
-    <form method="POST" id="formproducto" action="recibir_datos">
+    {% if form %}
+    <form method="POST" action="" enctype="multipart/form-data" id="formulario">
         <div class="form-group">
+            {% csrf_token %} {{ form.as_p }}
         </div>
-        <div class="container-fluid" id="producto">
-            <div class="row">
-                <div class="col" id="datospro">
-
-                    <div class="mb-3">
-                        <label for="id_producto" class="form-label">Id:</label>
-                        <input type="text" class="form-control" id="id_producto" name="id_producto" required>
-                    </div>
-                    
-                    <div class="input-group mb-3">
-                        <label class="input-group-text" for="inputGroupSelect01">Categoría</label>
-                        <select class="form-select" id="categoria" name="categoria" required data-error="#error1">
-                            <option value="" selected>Elige...</option>
-                            <option value="1" required>Perro</option>
-                            <option value="2" required>Gato</option>
-                        </select>
-                        <div class="errorTxt">
-                            <span id="error1"></span>
-                        </div>
-                    </div>
-                    
-                    <div class="mb-3">
-                        <label for="nombre" class="form-label">Nombre:</label>
-                        <input type="text" class="form-control" id="nombre" name="nombre" required>
-                    </div>
-                    
-                    <div class="mb-3">
-                        <label for="descripcion" class="form-label">Descripción:</label>
-                        <textarea class="form-control" id="descripcion" name="descripcion"></textarea required>
-                    </div>
-                    
-                    <div class="mb-3">
-                        <label for="precio" class="form-label">Precio:</label>
-                        <input type="number" class="form-control" id="precio" name="precio" required>
-                    </div>
-                    
-                    <div class="mb-3">
-                        <label for="desc_suscripcion" class="form-label">Descuento de suscripción:</label>
-                        <input type="number" class="form-control" id="desc_suscripcion" name="desc_suscripcion">
-                    </div>
-                    
-                    <div class="mb-3">
-                        <label for="desc_oferta" class="form-label">Descuento de oferta:</label>
-                        <input type="number" class="form-control" id="desc_oferta" name="desc_oferta">
-                    </div>
-
-                    
-                </div>
-
-                <div class="col-md-6">
-                    <div class="mb-3">
-                        <label for="foto" class="form-label">Foto del producto</label>
-                        
-                        <input type="file" class="form-control" id="foto" name="foto">
-                    </div>
-                </div>
-            </div>
-            <br>
-            <!-- botones -->
-            <div class="row">
-                <div class="col text-center">
-                    <button type="submit" class="btn btn-primary me-md-2">Guardar</button>
-                    <button type="reset" class="btn btn-secondary me-md-2">Nuevo</button>          
-                    <button type="button" class="btn btn-danger">Eliminar</button>
-                </div>
-
-                <br><br>
-    </form>    
-    
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Categoría</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Descripción</th>
-                <th scope="col">Precio</th>
-                <th scope="col">Descuento suscriptor</th>
-                <th scope="col">Descuento oferta</th>
-                <th scope="col">Imagen</th>
-                
-            </tr>
-        </thead>
-        <tbody>
-            {% for ve in list %}
-            <tr>
-    
-                <td>{{ ve.id }}</td>
-                <td>{{ ve.categoria }}</td>
-                <td>{{ ve.nombre }}</td>
-                <td>{{ ve.descripcion }}</td>
-                <td>{{ ve.precio }}</td>
-                <td>{{ ve.descsus }}</td>
-                <td>{{ ve.descof }}</td>
-                <td><img src="{% static 'core/images/PlaceHolder.png' %}" alt=""></td>
-                
-            </tr>
-            {% endfor %}
-        
-        </tbody>
-    </table>
+        <input type="submit" class="btn btn-primary btnwidth" id="id_guardar" value="Guardar">
+        <!-- <input type="reset" class="btn btn-primary btnwidth" id="id_nuevo" value="Nuevo"> -->
+        <a class="btn btn-success btnwidth" href="{% url 'productos' 'ins' -1 %}">Nuevo</a>
+        {% if id != '-1' %}
+        <a class="btn btn-danger btnwidth" href="{% url 'productos' 'del' id %}">Eliminar</a>
+        {% endif %}
+        {% if mesg %}
+        <div id="form_message" class="alert alert-danger" role="alert">{{ mesg }}</div>
+        {% endif %}
+    </form>
+    {% endif %}
+    {% if list %}
+        <table id="tabla_datos">
+            <thead>
+                <tr>
+                    <th>id producto</th>
+                    <th>Nombre Producto</th>
+                    <th>Precio</th>
+                    <th>Descripcion</th>
+                    <th>Stock</th>
+                    <th>Imagen</th>
+                    <th>Categoría</th>
+                    <th class="titulo_boton">Editar</th>
+                    <th class="titulo_boton">Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for p in list %}
+                <tr>
+                    <td>{{ p.idProducto }}</td>
+                    <td>{{ p.nombreProducto }}</td>
+                    <td>{{ p.precioProducto }}</td>
+                    <td>{{ p.descripcionProducto }}</td>
+                    <td>{{ p.stockProducto }}</td>
+                    <td>{{ p.categoria }}</td>
+                    <td><img src="/media/{{ p.imagenProducto }}" class="mini_auto" alt=""></td>
+                    <td><a href="{% url 'productos' 'upd' p.idProducto %}" 
+                        class="btn btn-primary btn-sm boton_chico">Editar</a></td>
+                    <td><a href="{% url 'productos' 'del' p.idProducto %}" 
+                        class="btn btn-danger btn-sm boton_chico">Eliminar</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
 
     <br>
-        <a href="{% url 'mantenedor_prod' %}" class="btn btn-info btn-sm">Poblar BD</a>
-
-        <a href="http://127.0.0.1:8000/admin" class="btn btn-info btn-sm">Administración</a>
+    <a class="btn btn-info btnwidth" href="{% url 'home' %}">Inicio</a>
+    <a href="http://127.0.0.1:8000/admin" class="btn btn-info btn-sm">Administración</a>
 
             </div>
     

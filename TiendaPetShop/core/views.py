@@ -5,18 +5,20 @@ from .forms import ProductoForm
 # Create your views here.
 
 def home(request):
-    return render(request, "core/index.html")
+    data = {"list": Producto.objects.all().order_by('idProducto')}
+    return render(request, "core/index.html",data)
+
 
 def producto_tienda(request):
     data = {"list": Producto.objects.all().order_by('idProducto')}
     return render(request, "core/productos.html", data)
 
-def producto_ficha(request, id):
-    producto = producto.objects.get(patente=id)
+def ficha(request, id):
+    producto = Producto.objects.get(idProducto=id)
     data = {"producto":  producto}
     return render(request, "core/ficha.html", data)
 
-def producto(request, action, id):
+def productos(request, action, id):
     data = {"mesg": "", "form": ProductoForm, "action": action, "id":id}
 
     if action == 'ins':
@@ -46,5 +48,5 @@ def producto(request, action, id):
             data["mesg"] = "El producto ya estaba eliminado"
 
     data["list"] = Producto.objects.all().order_by('idProducto')
-    return render(request, "core/producto.html", data)
+    return render(request, "core/productos.html", data)
 

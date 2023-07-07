@@ -38,7 +38,7 @@
             {% if list %}
             <div class="row">
             {% for p in list %}
-                <a href="{% url 'producto_ficha' p.idProducto %}">
+                <a href="{% url 'ficha' p.idProducto %}">
                     <div class="tienda_auto_recuadro">
                         <div class="tienda_auto_recuadro_interior">
                             <img src="/media/{{ p.imagenProducto }}" class="tienda_auto_imagen" alt="">
@@ -55,6 +55,9 @@
         {% endif %}
         <div class="tienda_link_home">
             <a href="{% url 'home' %}" class="btn btn-info btn-sm">Ir a la página e inicio</a>
+        </div>
+        <div style="margin-top: 30px;">
+            <a class="btn btn-primary" href="{% url 'productos' 'ins' -1 %}">Mantener productos de la tienda</a>
         </div>
         </div>
     </div>
