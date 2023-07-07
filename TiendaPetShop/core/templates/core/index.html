@@ -35,42 +35,27 @@
     <br>
     <div class="container">
         <div class="row pad">
-            <div class="col-md-4 align disponible">
-                <a href="ficha.html"><img class = "img-fluid" src="{% static 'core/images/PlaceHolder.png' %}" alt=""></a>
-                <p class="text-center">
-                    DISPONIBLE
-                </p>
-                <p class="text-center">
-                    $8000
-                </p>
-                <p class="text-center">
-                    Saco de alimento Royal canin
-                </p>
+            {% if list %}
+            <div class="row">
+            {% for p in list %}
+                <a href="{% url 'producto_ficha' p.idProducto %}">
+                    <div class="tienda_auto_recuadro">
+                        <div class="tienda_auto_recuadro_interior">
+                            <img src="/media/{{ p.imagenProducto }}" class="tienda_auto_imagen" alt="">
+                        </div>
+                        <div>
+                            {{ p.nombreProducto }}
+                            <br>
+                            {{ p.categoria }}
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
             </div>
-            <div class="col-md-4 oferta">
-                <a href="ficha.html"><img class = "img-fluid" src="{% static 'core/images/PlaceHolder.png' %}" alt=""></a>
-                <p class="text-center">
-                    EN OFERTA
-                </p>
-                <p class="text-center">
-                    $8000
-                </p>
-                <p class="text-center">
-                    Saco de alimento Cat Show
-                </p>
-            </div>
-            <div class="col-md-4 agotado">
-                <a href="ficha.html"><img class = "img-fluid" src="{% static 'core/images/PlaceHolder.png' %}" alt=""></a>
-                <p class="text-center">
-                    AGOTADO
-                </p>
-                <p class="text-center">
-                    $8000
-                </p>
-                <p class="text-center">
-                    Peineta para gatos
-                </p>
-            </div>
+        {% endif %}
+        <div class="tienda_link_home">
+            <a href="{% url 'home' %}" class="btn btn-info btn-sm">Ir a la página e inicio</a>
+        </div>
         </div>
     </div>
     <div class="container">

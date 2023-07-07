@@ -15,25 +15,25 @@
     </nav>
     <h1>Ficha de Producto</h1>
     <div class="container-fluid">
-        <div class="row">
-            <div class="col">
-                <img src="{% static 'core/images/PlaceHolder.png' %}" class = "" alt="">
+        <div class="row text-center">
+            <div class="mx-auto col-sm-12 col-md-6 col-lg-6 col-xl-6 ficha_auto_recuadro">
+                <img src="/media/{{ producto.imagenProducto }}" class="ficha_auto_imagen" alt="">
             </div>
-            <div class="col">
-                <h2>Saco de alimento Royal Canin</h2>
-                <h3 class="disponible">DISPONIBLE</h3>
-                <p>Descripción:</p>
-                <p>Royal Canin, 3kg, sabor pavo, adulto:</p>
-                <p>En stock: 3 unidades</p>
-                <button>
-                    comprar ahora
-                </button>
-                <button>
-                    Agregar al carrito
-                </button>
+            <div class="mx-auto col-sm-12 col-md-6 col-lg-6 col-xl-6 ficha_datos_recuadro">
+                <h1>
+                    nombre Producto: {{ producto.nombreProducto }}<br><br>
+                </h1>
+                <p>Precio {{ producto.precioProducto }}</p>
+                <h2>
+                    descripción: {{ producto.descripcionProducto }}<br><br>
+                </h2>
+                <h3>
+                    Stock: {{ producto.stockProducto }}
+                </h2>
             </div>
         </div>
     </div>
+
     <br>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
