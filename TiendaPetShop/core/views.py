@@ -50,3 +50,5 @@ def productos(request, action, id):
     data["list"] = Producto.objects.all().order_by('idProducto')
     return render(request, "core/productos.html", data)
 
+def nosotros(request):
+    return render(request, "core/nosotros.html")
