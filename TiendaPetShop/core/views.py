@@ -73,7 +73,7 @@ def productos(request, action, id):
     elif action == "upd":
         objeto = Producto.objects.get(idProducto = id)
         if request.method == 'POST':
-            form = ProductoForm(data=request.POST, files=request.FILES, instance=objecto)
+            form = ProductoForm(data=request.POST, files=request.FILES, instance=objeto)
             if form.is_valid:
                 form.save()
                 data["mesg"] = "¡El producto fue actualizado correctamente!"
@@ -82,7 +82,7 @@ def productos(request, action, id):
     elif action == "del":
         try:
             Producto.objects.get(idProducto=id).delete()
-            data["mesg"] = "¡El vehículo fue eliminado correctamente!"
+            data["mesg"] = "¡El producto fue eliminado correctamente!"
             return redirect(producto, action='ins', id = '-1')
         except:
             data["mesg"] = "El producto ya estaba eliminado"
