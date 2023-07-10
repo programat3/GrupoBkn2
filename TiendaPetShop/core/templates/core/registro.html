@@ -26,61 +26,15 @@
 
     <div class="container mt-5">
         <h2>Registro de cliente</h2>
-        <form method="POST" id="formregistro" action="recibir_datos">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="mb-3">
-                        <label for="rut" class="form-label">RUT</label>
-                        <input type="text" class="form-control" id="rut" name="rut" required placeholder="Ej: 11111111-K">
-                    </div>
-                    <div class="mb-3">
-                        <label for="nombres" class="form-label">Nombres</label>
-                        <input type="text" class="form-control" id="nombres" name="nombres" required
-                            placeholder="Ingresa tus nombres">
-                    </div>
-                    <div class="mb-3">
-                        <label for="apellidos" class="form-label">Apellidos</label>
-                        <input type="text" class="form-control" id="apellidos" name="apellidos" required
-                            placeholder="Ingresa tus apellidos">
-                    </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" required
-                            placeholder="Ingresa tu correo">
-                    </div>
-                    <div class="mb-3">
-                        <label for="direccion" class="form-label">Dirección</label>
-                        <textarea class="form-control" id="direccion" name="direccion"></textarea required
-                            placeholder="Ej: calle, numero, ciudad">
-                    </div>
-                    <div class="mb-3">
-                        <label for="contrasena" class="form-label">Contraseña</label>
-                        <input type="password" class="form-control" id="contrasena" name="contrasena" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="confirmar-contrasena" class="form-label">Confirmar Contraseña</label>
-                        <input type="password" class="form-control" id="confcontrasena" name="confcontrasena" required>
-                    </div>
-                    <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Deseo suscribirme con un aporte de $3000
-                            mensuales y obtener
-                            un 5% de descuento en mis compras.
-                        </label>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="mb-3">
-                        <label for="foto" class="form-label">Foto de perfil</label>
-                        
-                        <input type="file" class="form-control" id="foto" name="foto">
-                    </div>
-                </div>
+        {% if form %}
+        <form method="POST" id="formregistro" action="">
+            <div class="form-group">
+                {% csrf_token %} {{ form.as_p }}
             </div>
-            <!--botones-->
-            <button type="submit" class="btn btn-primary">Registrarse</button>
-            <button type="reset" class="btn btn-secondary">Limpiar</button>
+            <input type="submit" class="btn btn-primary btnwidth" id="id_guardar" value="Guardar">
+            <a class="btn btn-success ancho-150px" href="{% url 'registro' %}"> Limpiar </a>
         </form>
+        {%endif%}
     </div>
 
 

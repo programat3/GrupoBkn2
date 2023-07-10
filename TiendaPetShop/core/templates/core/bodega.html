@@ -58,7 +58,7 @@
                 <th> {{ p.nombre_categoria }} </th>
                 <th> {{p.nombre_producto}} </th>
                 <th> {{p.estado}} </th>
-                <th><img src="/media/{{ p.imagen }}"></th>
+                <th><img src="/media/{{ p.imagen }}" style="height: 200px;"></th>
                 <th><a href="{% url 'eliminar_producto_en_bodega' p.bodega_id %}">ELIMINAR</a></th>
               </tr>
               {%endfor%}
