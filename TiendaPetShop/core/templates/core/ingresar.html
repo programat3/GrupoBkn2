@@ -26,9 +26,18 @@
     <br>
     <br>
     <div class="container mt-5">
+        {%if form%}
         <form method="POST" id="form-ingresar" action="">
-            
+            <div class="form-group">
+                {% csrf_token %} {{ form.as_p }}
+            </div>
+            <input type="submit" class="btn btn-primary btnwidth" id="ingresar" value="Ingresar">
+            <a class="btn btn-success ancho-150px" href="{% url 'ingresar' %}"> Limpiar </a>
         </form>
+        {% if mesg %}
+        <div id="form_message" class="alert alert-danger" role="alert">{{ mesg }}</div>
+        {% endif %}
+        {%endif%}
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
