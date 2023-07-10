@@ -195,3 +195,13 @@ p{
 #tituloRopa {
     text-align: center;
 }
+
+#form{
+    text-align: left;
+    padding-left: 2%;
+    width: 50%;
+}
+table{
+    border-width: 1px;
+    border-color: rgba(0, 0, 0, 0.2);
+}
