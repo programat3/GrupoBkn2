@@ -19,16 +19,16 @@
     <br>
     <table class="table table-striped">
         <thead>
-          <tr>
-            <th scope="col">Nro boleta</th>
-            <th scope="col">Fecha venta</th>
-            <th scope="col">Nombre Cliente</th>
-            <th scope="col">Subscrito</th>
-            <th scope="col">Monto total</th>
-            <th scope="col">Estado actual</th>
-            <th scope="col">Detalle</th>
-            <th scope="col">Cambiar Estado</th>
-          </tr>
+            <tr>
+                <th scope="col">Nro boleta</th>
+                <th scope="col">Fecha venta</th>
+                <th scope="col">Nombre Cliente</th>
+                <th scope="col">Subscrito</th>
+                <th scope="col">Monto total</th>
+                <th scope="col">Estado actual</th>
+                <th scope="col">Detalle</th>
+                <th scope="col">Cambiar Estado</th>
+            </tr>
         </thead>
         <tbody>
             <tr>
@@ -38,7 +38,7 @@
                 <td>No</td>
                 <td>$15.000</td>
                 <td>Entregado</td>
-                <td><a href="boleta.html">Ver detalle</a></td>
+                <td><a href="{% url 'boleta' %}">Ver detalle</a></td>
                 <td>
                     <a href="#">Anulado</a>
                     <a href="#">Vendido</a>
@@ -53,7 +53,7 @@
                 <td>No</td>
                 <td>$15.000</td>
                 <td>Despachado</td>
-                <td><a href="boleta.html">Ver detalle</a></td>
+                <td><a href="{% url 'boleta' %}">Ver detalle</a></td>
                 <td>
                     <a href="#">Anulado</a>
                     <a href="#">Vendido</a>

@@ -222,24 +222,24 @@ $(document).ready(function(){
     });
 });
 
-    $(document).ready(function(){
+$(document).ready(function(){
 
     $("#form-ingresar").validate({
         rules: {
-            exampleInputEmail1: {
+            email: {
                 required: true,
                 emai: true,
             },
-            exampleInputPassword1:{
+            contrasena:{
                 required: true,
             },
         },
         messages: {
-            exampleInputEmail1: {
+            email: {
                 required: "El correo es obligatorio",
                 email: "Ingrese un correo válido",
             },
-            exampleInputPassword1: {
+            contrasena: {
                 required: "La contraseña es obligatoria"
             },
         },
