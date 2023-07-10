@@ -33,6 +33,9 @@
             </div>
             <input type="submit" class="btn btn-primary btnwidth" id="id_guardar" value="Guardar">
             <a class="btn btn-success ancho-150px" href="{% url 'registro' %}"> Limpiar </a>
+            {% if mesg %}
+            <div id="form_message" class="alert alert-danger" role="alert">{{ mesg }}</div>
+            {% endif %}
         </form>
         {%endif%}
     </div>
