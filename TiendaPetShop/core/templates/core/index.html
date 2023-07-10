@@ -36,21 +36,22 @@
     <br>
     <div class="container">
         <div class="row pad">
-            {% if list %}
+            {% if productos %}
             <div class="row">
-            {% for p in list %}
-                <a href="{% url 'ficha' p.nombre %}">
-                    <div class="tienda_auto_recuadro">
-                        <div class="tienda_auto_recuadro_interior">
-                            <img src="/media/{{ p.imagen }}" class="tienda_auto_imagen" alt="">
+                
+            {% for p in productos %}
+            <div class="col">
+                <a href="{% url 'ficha' p.id %}" style="text-decoration: none; color: black;">
+                        <div>
+                            <img src="/media/{{ p.imagen }}" class="tienda_auto_imagen" alt="" style="height: 300px;">
                         </div>
                         <div>
                             {{ p.nombre }}
                             <br>
                             {{ p.categoria }}
                         </div>
-                    </div>
-                </a>
+                    </a>
+                </div>
             {% endfor %}
             </div>
         {% endif %}

@@ -13,29 +13,28 @@
     <nav class = "navbar navbar-expand-lg bg-light">
         {%include 'core/navbar.html'%}
     </nav>
+    <br>
     <h1>Ficha de Producto</h1>
     <div class="container-fluid">
         <div class="row text-center">
             <div class="mx-auto col-sm-12 col-md-6 col-lg-6 col-xl-6 ficha_auto_recuadro">
-                <img src="/media/{{ producto.imagenProducto }}" class="ficha_auto_imagen" alt="">
+                <img src="/media/{{ imagen }}" class="ficha_auto_imagen" alt="">
             </div>
             <div class="mx-auto col-sm-12 col-md-6 col-lg-6 col-xl-6 ficha_datos_recuadro">
                 <h1>
-                    nombre Producto: {{ producto.nombreProducto }}<br><br>
+                    {{ nombre }}<br><br>
                 </h1>
-                <p>Precio {{ producto.precioProducto }}</p>
-                <h2>
-                    descripción: {{ producto.descripcionProducto }}<br><br>
-                </h2>
-                <h3>
-                    Stock: {{ producto.stockProducto }}
-                </h2>
+                <h4>
+                {{ descripcion }}<br><br>
+                </h4>
+                <p>{{ html_stock }}</p>
+                {{html_precio|safe}}
+                
             </div>
         </div>
     </div>
 
     <br>
-    <a class="btn btn-info btnwidth" href="{% url 'home' %}">Inicio</a>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{% static 'core/js/menu.js' %}"></script>
     <script src="{% static 'core/js/footer.js' %}"></script>
