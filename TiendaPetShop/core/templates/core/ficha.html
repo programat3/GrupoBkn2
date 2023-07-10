@@ -29,7 +29,8 @@
                 </h4>
                 <p>{{ html_stock }}</p>
                 {{html_precio|safe}}
-                
+                <br>
+                <a href="{%url 'agregar_producto_al_carrito' id%}" class="btn btn-primary">Agregar al Carrito</a>
             </div>
         </div>
     </div>
