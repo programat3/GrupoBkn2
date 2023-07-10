@@ -195,3 +195,9 @@ p{
 #tituloRopa {
     text-align: center;
 }
+
+#formulario{
+    text-align: left;
+    padding-left: 2%;
+    width: 50%;
+}
