@@ -385,3 +385,6 @@ def premio(request):
 def poblar(request):
     poblar_bd()
     return redirect(index)
+
+def ropa(request):
+    return render(request, 'core/ropa.html')
