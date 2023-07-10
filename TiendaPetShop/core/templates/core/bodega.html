@@ -19,96 +19,53 @@
 </head>
 <body>
     <nav class = "navbar fixed-top navbar-expand-lg bg-light">
-
+      {%include 'core/navbar.html'%}
     </nav>
 
-    <h1 class="text-center pt-5"> Mantenedor de bodega</h1>
+    <h1 class="text-center pt-5"> Mantenedor de Bodega</h1>
+    {% if form %}
+    <form method="POST" action="" enctype="multipart/form-data" id="formbodega">
+      <div class="form-group">
+          {% csrf_token %} {{ form.as_p }}
+      </div>
+      <input type="submit" class="btn btn-primary btnwidth" id="id_guardar" value="Guardar">
+      <a class="btn btn-success ancho-150px" href="{% url 'admin_bodega' %}"> Nuevo </a>
+    {% endif %}
 
-    <form method="POST" id="formbodega" action="recibir_datos">
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <div class="input-group mb-3">
-                    <label class="input-group-text" for="inputGroupSelect01">Categoría</label>
-                    <select class="form-select" id="categoria" name="categoria" required data-error="#error1">
-                      <option value="" selected>Elegir...</option>
-                      <option value="1">Perros</option>
-                      <option value="2">Gatos</option>
-                    </select>
-                  <div class="errorTxt">
-                    <span id="error1"></span>
-                  </div>
-                  </div>
-                  <div class="input-group mb-3">
-                    <label class="input-group-text px-3" for="inputGroupSelect01">Producto</label>
-                    <select class="form-select" id="producto" name="producto" required data-error="#error2">
-                      <option value="" selected>Elegir...</option>
-                      <option value="1" required>Saco de alimento Cat Show</option>
-                      <option value="2" required>Peineta para gatos</option>
-                      <option value="3"required>Saco de alimento Royal canin</option>
-                    </select>
-                  <div class="errorTxt">
-                    <span id="error2"></span>
-                  </div>
-                  </div>
-                  <div class="input-group mb-3">
-                    <span class="input-group-text" id="inputGroup-sizing-default">Cantidad</span>
-                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="cantidad" name="cantidad" data-error="#error3">
-                  </div>
-                  <div class="errorTxt">
-                    <span id="error3"></span>
-                  </div>
-                  <div>
-                    <button type="submit" class="btn btn-primary">Agregar</button>
-                    <button type="submit" class="btn btn-primary">Nuevo</button>
-                  </div>
-            </div>
-            <div class="col">
-                <img src="{% static 'core/images/PlaceHolder.png' %}" alt="imagen producto" id="img_prod">
-            </div>
-        </div>
-    </div>
-  </form> 
+
+    <!-- <input type="reset" class="btn btn-primary btnwidth" id="id_nuevo" value="Nuevo"> -->
+      {% if mesg %}
+      <div id="form_message" class="alert alert-danger" role="alert">{{ mesg }}</div>
+      {% endif %}
+  </form>
+  {% if productos %}
     <div class="m-5">
         <table class="table table-striped">
             <thead>
               <tr>
-                <th scope="col"></th>
-                <th scope="col">ID</th>
-                <th scope="col">Categoría</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Estado</th>
-                <th scope="col">Opciones</th>
+                <th>ID</th>
+                <th>Categoria</th>
+                <th>Nombre</th>
+                <th>Estado</th>
+                <th>Imagen</th>
+                <th>Eliminar</th>
+              </tr>
             </thead>
             <tbody>
+              {% for p in productos %}
               <tr>
-                <th scope="row"></th>
-                <td>300</td>
-                <td>Gatos</td>
-                <td>Saco de alimento Cat Show </td>
-                <td>Vendido</td>
-                <td><button type="submit" class="btn btn-primary">Eliminar</button></td>
+                <th> {{p.bodega_id}} </th>
+                <th> {{ p.nombre_categoria }} </th>
+                <th> {{p.nombre_producto}} </th>
+                <th> {{p.estado}} </th>
+                <th><img src="/media/{{ p.imagen }}"></th>
+                <th><a href="{% url 'eliminar_producto_en_bodega' p.bodega_id %}">ELIMINAR</a></th>
               </tr>
-              <tr>
-                <th scope="row"></th>
-                <td>301</td>
-                <td>Gatos</td>
-                <td>Peineta para gatos</td>
-                <td>En bodega</td>
-                <td><button type="submit" class="btn btn-primary">Eliminar</button></td>
-              </tr>
-              <tr>
-                <th scope="row"></th>
-                <td>400</td>
-                <td>Perros</td>
-                <td>Saco de alimento Royal canin</td>
-                <td>Despachado</td>
-                <td><button type="submit" class="btn btn-primary">Eliminar</button></td>
-              </tr>
+              {%endfor%}
             </tbody>
           </table>
     </div>
-</div>
+{%endif%}
 
   <!--Validadores-->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

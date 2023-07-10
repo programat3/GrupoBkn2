@@ -83,7 +83,7 @@ def admin_bodega(request):
         }
         lista.append(item)
 
-    return render(request, 'core/admin_bodega.html', {
+    return render(request, 'core/bodega.html', {
         'form': BodegaForm(),
         'productos': lista,
     })

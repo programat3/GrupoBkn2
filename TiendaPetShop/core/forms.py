@@ -37,7 +37,7 @@ class BodegaForm(forms.Form):
         label='Categoría'
     )
     producto = forms.ModelChoiceField(
-        queryset=Producto.objects.none(), 
+        queryset=Producto.objects.all(), 
         widget=forms.Select(attrs=form_select),
         label='Producto'
     )
