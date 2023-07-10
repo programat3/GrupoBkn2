@@ -28,7 +28,7 @@ def index(request):
     return render(request, 'core/index.html', datos)
 
 
-def registrarme(request):
+def registro(request):
 
     form = RegistroClienteForm()
     if request.method == 'POST':
@@ -47,7 +47,7 @@ def registrarme(request):
                 imagen=request.FILES['imagen'])
             return redirect(ingresar)
             
-    return render(request, "core/registrarme.html", {'form': form})
+    return render(request, "core/registro.html", {'form': form})
 
 
 def nosotros(request):
