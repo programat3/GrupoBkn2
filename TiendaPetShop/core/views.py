@@ -219,7 +219,7 @@ def miscompras(request):
             'estado': boleta.estado,
         }
         historial.append(boleta_historial)
-    return render(request, 'core/miscompras.html', { 
+    return render(request, 'core/mis_compras.html', { 
         'historial': historial 
     })
 
