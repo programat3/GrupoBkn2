@@ -28,7 +28,7 @@
                 <td>{{h.subscrito}}</td>
                 <td>{{h.total_a_pagar}}</td>
                 <td>{{h.estado}}</td>
-                <td><a href="{% url 'boletas'%}">Ver detalle</a></td>
+                <td><a href="{% url 'boleta' h.nro_boleta %}">Ver detalle</a></td>
                 <td>{{h.fecha_venta}}</td>
                 <td>{{h.fecha_despacho}}</td>
                 <td>{{h.fecha_entrega}}</td>
