@@ -116,23 +116,26 @@ def eliminar_producto_en_bodega(request, bodega_id):
 
 
 def ventas(request):
-    boletas = Boleta.objects.all()
-    historial =[]
-    for boleta in boletas:
-        boleta_historial = {
-            'nro_boleta': boleta.nro_boleta,
-            'nom_cliente': f'{boleta.cliente.usuario.first_name} {boleta.cliente.usuario.last_name}',
-            'fecha_venta': boleta.fecha_venta,
-            'fecha_despacho': boleta.fecha_despacho,
-            'fecha_entrega': boleta.fecha_entrega,
-            'subscrito': 'Sí' if boleta.cliente.subscrito else 'No',
-            'total_a_pagar': boleta.total_a_pagar,
-            'estado': boleta.estado,
-        }
-        historial.append(boleta_historial)
-    return render(request, 'core/ventas.html', { 
-        'historial': historial 
-    })
+    if Boleta.objects.exists()==True:
+        boletas = Boleta.objects.all()
+        historial =[]
+        for boleta in boletas:
+            boleta_historial = {
+                'nro_boleta': boleta.nro_boleta,
+                'nom_cliente': f'{boleta.cliente.usuario.first_name} {boleta.cliente.usuario.last_name}',
+                'fecha_venta': boleta.fecha_venta,
+                'fecha_despacho': boleta.fecha_despacho,
+                'fecha_entrega': boleta.fecha_entrega,
+                'subscrito': 'Sí' if boleta.cliente.subscrito else 'No',
+                'total_a_pagar': boleta.total_a_pagar,
+                'estado': boleta.estado,
+            }
+            historial.append(boleta_historial)
+        return render(request, 'core/historial_ventas.html', { 
+            'historial': historial 
+        })
+    else:
+        return render(request, 'core/historial_ventas.html')
 
 
 def boleta(request, nro_boleta):
@@ -143,6 +146,9 @@ def boleta(request, nro_boleta):
         'detalle_boleta': detalle_boleta 
     }
     return render(request, 'core/boleta.html', datos)
+
+def boletas(request):
+    return render(request, 'core/boleta.html')
 
 
 def cambiar_estado_boleta(request, nro_boleta, estado):
