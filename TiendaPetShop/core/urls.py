@@ -24,6 +24,7 @@ urlpatterns = [
 
 
     path('ventas', ventas, name='ventas'),
+    path('boletas', boletas, name='boletas'),
     path('boleta/<nro_boleta>', boleta, name='boleta'),
     path('cambiar_estado_boleta/<nro_boleta>/<estado>', cambiar_estado_boleta, name='cambiar_estado_boleta'),
     
