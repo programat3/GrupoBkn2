@@ -4,52 +4,46 @@
 {% block content %}
     <h1>Historial de ventas</h1>
     <br>
+    {% if historial %}
     <table class="table table-striped">
         <thead>
             <tr>
                 <th scope="col">Nro boleta</th>
-                <th scope="col">Fecha venta</th>
                 <th scope="col">Nombre Cliente</th>
                 <th scope="col">Subscrito</th>
                 <th scope="col">Monto total</th>
                 <th scope="col">Estado actual</th>
                 <th scope="col">Detalle</th>
+                <th scope="col">Fecha venta</th>
+                <th scope="col">Fecha Despacho</th>
+                <th scope="col">Fecha Entrega</th>
                 <th scope="col">Cambiar Estado</th>
             </tr>
         </thead>
         <tbody>
+            {%for h in historial%}
             <tr>
-                <td>425</td>
-                <td>1/1/2022</td>
-                <td>Claudia Parra</td>
-                <td>No</td>
-                <td>$15.000</td>
-                <td>Entregado</td>
-                <td><a href="{% url 'boletas' %}">Ver detalle</a></td>
+                <td> {{h.nro_boleta}} </td>
+                <td>{{h.nom_cliente}}</td>
+                <td>{{h.subscrito}}</td>
+                <td>{{h.total_a_pagar}}</td>
+                <td>{{h.estado}}</td>
+                <td><a href="{% url 'boletas'%}">Ver detalle</a></td>
+                <td>{{h.fecha_venta}}</td>
+                <td>{{h.fecha_despacho}}</td>
+                <td>{{h.fecha_entrega}}</td>
                 <td>
                     <a href="#">Anulado</a>
                     <a href="#">Vendido</a>
                     <a href="#">Despachado</a>
                     <a href="#">Entregado</a>
                 </td>
+                
             </tr>
-            <tr>
-                <td>535</td>
-                <td>1/3/2022</td>
-                <td>Claudia Parra</td>
-                <td>No</td>
-                <td>$15.000</td>
-                <td>Despachado</td>
-                <td><a href="{% url 'boletas' %}">Ver detalle</a></td>
-                <td>
-                    <a href="#">Anulado</a>
-                    <a href="#">Vendido</a>
-                    <a href="#">Despachado</a>
-                    <a href="#">Entregado</a>
-                </td>
-            </tr>
+            {%endfor%}
         </tbody>
     </table>
+    {%endif%}
 <br>
 
 {% endblock content %}
