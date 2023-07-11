@@ -33,10 +33,10 @@
                 <td>{{h.fecha_despacho}}</td>
                 <td>{{h.fecha_entrega}}</td>
                 <td>
-                    <a href="#">Anulado</a>
-                    <a href="#">Vendido</a>
-                    <a href="#">Despachado</a>
-                    <a href="#">Entregado</a>
+                    <a href="{% url 'cambiar_estado_boleta' h.nro_boleta 'Anulado' %}">Anulado</a>
+                    <a href="{% url 'cambiar_estado_boleta' h.nro_boleta 'Vendido' %}"">Vendido</a>
+                    <a href="{% url 'cambiar_estado_boleta' h.nro_boleta 'Despachado' %}"">Despachado</a>
+                    <a href="{% url 'cambiar_estado_boleta' h.nro_boleta 'Entregado' %}">Entregado</a>
                 </td>
                 
             </tr>
